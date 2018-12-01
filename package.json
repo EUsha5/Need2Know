@@ -3,9 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@8base/app-provider": "^0.6.5",
+    "@8base/auth": "^0.6.5",
+    "@8base/boost": "0.8.11",
+    "@8base/file-input": "^0.6.5",
+    "@8base/forms": "^0.6.5",
+    "@8base/table-schema-provider": "^0.6.5",
+    "apollo-client": "^2.4.5",
+    "graphql": "^14.0.2",
     "react": "^16.6.3",
+    "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-emotion": "^10.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-toastify": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
