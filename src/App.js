@@ -19,6 +19,7 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import User from './components/User';
 import Customer from './components/Customer';
+import FormPage from './components/FormPage';
 import TempBreadcrumb from './components/TempBreadcrumbs';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
@@ -80,11 +81,11 @@ class App extends React.PureComponent {
           >
             {({ loading }) => (
               <AsyncContent loading={loading} stretch>
-                <div className="container">
+                <div className="container-fluid">
                   <TempBreadcrumb />
                   <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/login" render={() => <h1>Login</h1>} />
+                    <Route exact path="/login" component={FormPage} />
                     <Route path="/admin/:userId" component={Admin} />
                     <Route path="/user/:userId" component={User} />
                     <Route path="/cust/:userId" component={Customer} />

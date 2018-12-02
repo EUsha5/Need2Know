@@ -10,6 +10,9 @@ export default class TempBreadcrumbs extends Component {
             <Link to={'/'}>Home</Link>
           </li>
           <li className="breadcrumb-item">
+            <Link to={'/login'}>Login</Link>
+          </li>
+          <li className="breadcrumb-item">
             <Link to={'/user/user'}>User</Link>
           </li>
           <li className="breadcrumb-item">
@@ -18,7 +21,6 @@ export default class TempBreadcrumbs extends Component {
           <li className="breadcrumb-item">
             <Link to={'/cust/customer'}>Customer</Link>
           </li>
-          <li className="breadcrumb-item active">Data</li>
         </ol>
       </div>
     );
