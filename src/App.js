@@ -19,6 +19,7 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import User from './components/User';
 import Customer from './components/Customer';
+import TempBreadcrumb from './components/TempBreadcrumbs';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
@@ -79,13 +80,16 @@ class App extends React.PureComponent {
           >
             {({ loading }) => (
               <AsyncContent loading={loading} stretch>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/login" render={() => <h1>Login</h1>} />
-                  <Route path="/admin/:userId" component={Admin} />
-                  <Route path="/user/:userId" component={User} />
-                  <Route path="/cust/:userId" component={Customer} />
-                </Switch>
+                <div className="container">
+                  <TempBreadcrumb />
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/login" render={() => <h1>Login</h1>} />
+                    <Route path="/admin/:userId" component={Admin} />
+                    <Route path="/user/:userId" component={User} />
+                    <Route path="/cust/:userId" component={Customer} />
+                  </Switch>
+                </div>
               </AsyncContent>
             )}
           </EightBaseAppProvider>
