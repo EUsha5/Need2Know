@@ -10,10 +10,6 @@ import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth } from './routes/auth';
-import { Brokers } from './routes/brokers';
-import { Customers } from './routes/customers';
-import { Properties } from './routes/properties';
-import { Listings } from './routes/listings';
 
 import Home from './components/Home';
 import Admin from './components/Admin';
