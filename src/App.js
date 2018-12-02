@@ -1,25 +1,96 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Auth0WebClient } from "@8base/auth";
-import { EightBaseAppProvider } from "@8base/app-provider";
-import { EightBaseBoostProvider, AsyncContent } from "@8base/boost";
-import Home from "./components/Home";
-import Admin from "./components/Admin";
-import User from "./components/User";
-import Customer from "./components/Customer";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { Auth0WebClient } from '@8base/auth';
+import { EightBaseAppProvider } from '@8base/app-provider';
+import { EightBaseBoostProvider, AsyncContent } from '@8base/boost';
+import { ToastContainer, toast } from 'react-toastify';
 
-class App extends Component {
+import { ProtectedRoute } from 'shared/components';
+import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
+
+import { MainPlate, ContentPlate, Nav } from './components';
+import { Auth } from './routes/auth';
+import { Brokers } from './routes/brokers';
+import { Customers } from './routes/customers';
+import { Properties } from './routes/properties';
+import { Listings } from './routes/listings';
+
+import Home from './components/Home';
+import Admin from './components/Admin';
+import User from './components/User';
+import Customer from './components/Customer';
+
+const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
+
+const AUTH_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
+const AUTH_DOMAIN = 'auth.8base.com';
+
+const auth0WebClient = new Auth0WebClient({
+  domain: AUTH_DOMAIN,
+  clientID: AUTH_CLIENT_ID,
+  redirectUri: `${window.location.origin}/auth/callback`,
+  logoutRedirectUri: `${window.location.origin}/auth`,
+});
+
+class App extends React.PureComponent {
+  // renderContent = ({ loading }) => (
+  //   <AsyncContent loading={loading} stretch>
+  //     <Switch>
+  //       <Route path="/auth" component={Auth} />
+  //       <Route>
+  //         <MainPlate>
+  //           <Nav.Plate color="BLUE">
+  //             <Nav.Item icon="Group" to="/brokers" label="Brokers" />
+  //             <Nav.Item icon="Customers" to="/customers" label="Customers" />
+  //             <Nav.Item icon="House" to="/properties" label="Properties" />
+  //             <Nav.Item icon="Contract" to="/listings" label="Listings" />
+  //           </Nav.Plate>
+  //           <ContentPlate>
+  //             <Switch>
+  //               <ProtectedRoute exact path="/brokers" component={Brokers} />
+  //               <ProtectedRoute exact path="/customers" component={Customers} />
+  //               <ProtectedRoute exact path="/properties" component={Properties} />
+  //               <ProtectedRoute exact path="/listings" component={Listings} />
+  //               <Redirect to="/brokers" />
+  //             </Switch>
+  //           </ContentPlate>
+  //         </MainPlate>
+  //       </Route>
+  //     </Switch>
+  //   </AsyncContent>
+  // );
+
+  onRequestSuccess = ({ operation }) => {
+    const message = operation.getContext()[TOAST_SUCCESS_MESSAGE];
+
+    if (message) {
+      toast.success(message);
+    }
+  };
+
   render() {
     return (
       <Router>
-        <div>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" render={() => <h1>Login</h1>} />
-          <Route path="/admin/:userId" component={Admin} />
-          <Route path="/user/:userId" component={User} />
-          <Route path="/cust/:userId" component={Customer} />
-        </div>
+        <EightBaseBoostProvider>
+          <EightBaseAppProvider
+            uri={REACT_APP_8BASE_API_ENDPOINT}
+            authClient={auth0WebClient}
+            onRequestSuccess={this.onRequestSuccess}
+          >
+            {({ loading }) => (
+              <AsyncContent loading={loading} stretch>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" render={() => <h1>Login</h1>} />
+                  <Route path="/admin/:userId" component={Admin} />
+                  <Route path="/user/:userId" component={User} />
+                  <Route path="/cust/:userId" component={Customer} />
+                </Switch>
+              </AsyncContent>
+            )}
+          </EightBaseAppProvider>
+          <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
+        </EightBaseBoostProvider>
       </Router>
     );
   }
