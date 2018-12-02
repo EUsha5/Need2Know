@@ -37,3 +37,39 @@ body,
 .form-gradient input[type='password']:focus:not([readonly]) + label {
   color: #4f4f4f;
 }
+
+/* temporary box colors */
+.home-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  height: 100%;
+  margin: 0 20px 20px 20px;
+}
+
+.home-container div {
+  height: 100%;
+  width: 100%;
+}
+
+.blue-square {
+  background-color: blue;
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+}
+.green-square {
+  background-color: green;
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+}
+.teal-square {
+  background-color: teal;
+  grid-column: 2 / 4;
+  grid-row: 3 / 5;
+}
+.orange-square {
+  background-color: orange;
+  grid-column: 4 / 5;
+  grid-row: 1 / 3;
+}
