@@ -79,6 +79,12 @@ class App extends React.PureComponent {
               <AsyncContent loading={loading} /*stretch */>
                 <div className="container-fluid">
                   <TempBreadcrumb />
+                  <Nav.Plate color="BLUE">
+                    <Nav.Item icon="Group" to="/brokers" label="Brokers" />
+                    <Nav.Item icon="Customers" to="/customers" label="Customers" />
+                    <Nav.Item icon="House" to="/properties" label="Properties" />
+                    <Nav.Item icon="Contract" to="/listings" label="Listings" />
+                  </Nav.Plate>
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={FormPage} />
