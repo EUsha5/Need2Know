@@ -11,6 +11,7 @@ import {
   MDBBtn,
   MDBInput,
 } from 'mdbreact';
+import 'mdbreact/dist/css/mdb.css';
 
 const FormPage = () => {
   return (
