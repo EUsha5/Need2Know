@@ -11,6 +11,8 @@ import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth } from './routes/auth';
 
+import NewTicket from './components/NewTicket';
+import Support from './components/Support';
 import Home from './components/Home';
 import Admin from './components/Admin';
 import User from './components/User';
@@ -79,18 +81,20 @@ class App extends React.PureComponent {
               <AsyncContent loading={loading} /*stretch */>
                 <div className="container-fluid">
                   <TempBreadcrumb />
-                  <Nav.Plate color="BLUE">
-                    <Nav.Item icon="Group" to="/brokers" label="Brokers" />
+                  <Nav.Plate color="RED">
+                    <Nav.Item icon="Group" to="/finances" label="Finances" />
                     <Nav.Item icon="Customers" to="/customers" label="Customers" />
-                    <Nav.Item icon="House" to="/properties" label="Properties" />
-                    <Nav.Item icon="Contract" to="/listings" label="Listings" />
+                    <Nav.Item icon="House" to="/support" label="Support" />
+                    <Nav.Item icon="Contract" to="/products" label="Products" />
                   </Nav.Plate>
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={FormPage} />
                     <Route path="/admin/:userId" component={Admin} />
                     <Route path="/user/:userId" component={User} />
-                    <Route path="/cust/:userId" component={Customer} />
+                    <Route path="/customers/:userId" component={Customer} />
+                    <Route exact path="/support" component={Support} />
+                    <Route path="/support/newticket" component={NewTicket} />
                   </Switch>
                 </div>
               </AsyncContent>

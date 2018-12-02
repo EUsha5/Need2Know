@@ -73,3 +73,142 @@ body,
   grid-column: 4 / 5;
   grid-row: 1 / 3;
 }
+
+/*Support Default*/
+
+.support-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  height: 100%;
+  margin: 0 20px 20px 0;
+}
+
+.support-container div {
+  height: 100%;
+}
+
+.yellow-square {
+  background-color: yellow;
+  grid-column: 2/4;
+  grid-row: 1;
+}
+
+.purple-square {
+  background-color: purple;
+  grid-column: 2/4;
+  grid-row: 2;
+}
+
+.cyan-square {
+  background-color: cyan;
+  grid-column: 2/4;
+  grid-row: 3;
+}
+
+.grey-square {
+  background-color: grey;
+  grid-column: 2/4;
+  grid-row: 4;
+}
+
+.support-text {
+  text-align: center;
+  padding-top: 60px;
+  font-size: 26px;
+}
+
+.newticket-header {
+  text-align: center;
+  font-size: 64px;
+  font-weight: bolder;
+  grid-row: 1;
+  grid-column: 3/6;
+}
+
+.newticket-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto auto;
+  height: 100%;
+  margin: 0 20px 20px 0;
+}
+
+.newticket-container div {
+  height: 100%;
+}
+
+.newticket-name {
+  background-color: blue;
+  grid-column: 1;
+  grid-row: 2;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.name-input {
+  grid-column: 2/5;
+  grid-row: 2;
+  align-self: center;
+}
+
+.source-input {
+  grid-column: 2/5;
+  grid-row: 3;
+  align-self: center;
+}
+
+.newticket-source {
+  background-color: blue;
+  grid-column: 1;
+  grid-row: 3;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.newticket-id {
+  background-color: blue;
+  grid-column: 1;
+  grid-row: 4;
+  align-self: center;
+  justify-self: center;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.id-input {
+  grid-column: 2/3;
+  grid-row: 4;
+  align-self: center;
+}
+
+.newticket-dept {
+  background-color: blue;
+  grid-column: 4;
+  grid-row: 4;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.dept-selector {
+  grid-column: 5/8;
+  grid-row: 4;
+  align-self: center;
+}
+
+.newticket-desc {
+  background-color: blue;
+  grid-column: 1;
+  grid-row: 5;
+  text-align: center;
+  padding-top: 35px;
+}
+
+.desc-area {
+  grid-column: 2/8;
+  grid-row: 5/8;
+}
